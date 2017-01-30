@@ -1,0 +1,23 @@
+.link {
+  text-decoration: none;
+  color: inherit;
+  padding: 1.5rem;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.tabbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #331832;
+  color: #C6D8D3;
+  position: fixed;
+  height: 3rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
