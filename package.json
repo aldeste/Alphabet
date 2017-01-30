@@ -6,8 +6,8 @@
   "scripts": {
     "android": "cordova run android",
     "ios": "cordova run ios",
-    "prepare": "node config && webpack --config=config/webpack/webpack.prod.js && cordova prepare",
-    "build": "node config && cross-env NODE_ENV=production webpack --config=config/webpack/webpack.prod.js --color --progress -p && cordova build",
+    "prepare": "node config/config && webpack --config=config/webpack/webpack.prod.js && cordova prepare",
+    "build": "node config/config && cross-env NODE_ENV=production webpack --config=config/webpack/webpack.prod.js --color --progress -p && cordova build",
     "clean": "rimraf www",
     "start": "cross-env NODE_ENV=development clear && webpack-dev-server --config=config/webpack/webpack.dev.js --port=8080",
     "test": "jest",
