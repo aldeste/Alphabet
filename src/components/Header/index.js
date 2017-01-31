@@ -5,10 +5,10 @@ import styles from './style.css';
 const Header = () => (
   <nav className={styles.tabbar}>
     <Link to="/" className={styles.link} activeClassName={styles.active}>
-      Alphabet
+      AZ
     </Link>
     <Link to="/numbers" className={styles.link} activeClassName={styles.active}>
-      Exotics
+      ÄŻ
     </Link>
   </nav>
 );

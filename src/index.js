@@ -3,26 +3,22 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { AppContainer } from 'react-hot-loader';
 
-ReactDOM.render(
+const renderApp = Component => ReactDOM.render(
   <AppContainer>
-    <App />
+    <Component />
   </AppContainer>,
   document.getElementById('root'),
 );
 
-if (process.env === 'development') {
+if (process.env !== 'production') {
   window.Perf = require('react-addons-perf');
 }
 
+renderApp(App);
 // Hot Module Replacement API.
 // This will render components on component updates and edits.
 if (module.hot) {
   module.hot.accept('./App', () => {
-    ReactDOM.render(
-      <AppContainer>
-        <App />
-      </AppContainer>,
-      document.getElementById('root'),
-    );
+    renderApp(App);
   });
 }
