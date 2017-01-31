@@ -10,12 +10,36 @@
     "build": "node config/config && cross-env NODE_ENV=production webpack --config=config/webpack/webpack.prod.js --color --progress -p && cordova build",
     "clean": "rimraf www",
     "start": "cross-env NODE_ENV=development clear && webpack-dev-server --config=config/webpack/webpack.dev.js --port=8080",
-    "test": "jest",
+    "test": "node scripts/test.js --env=jsdom",
     "test:cov": "jest --coverage"
   },
   "repository": "https://github.com/aldeste/Alphabet.git",
   "author": "Alexander D'Este <alexanderdeste@gmail.com>",
   "license": "MIT",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](www|scripts|build|docs|node_modules)[/\\\\]"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    }
+  },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.4.2",
@@ -37,8 +61,9 @@
     "cross-env": "^3.1.3",
     "css-loader": "^0.26.1",
     "css-mqpacker": "^5.0.1",
+    "dotenv": "^4.0.0",
     "elementtree": "^0.1.7",
-    "enzyme": "^2.6.0",
+    "enzyme": "^2.7.1",
     "eslint": "^3.14.1",
     "eslint-config-react-app": "^0.5.0",
     "eslint-plugin-flowtype": "^2.30.0",
